@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="listener"
+            type="com.aceinteract.mvvm.todo.ui.task.list.TaskActionListener" />
+        
+        <variable
+            name="task"
+            type="com.aceinteract.mvvm.todo.data.entity.Task" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:onClick="@{() -> listener.onTaskClicked(task)}"
+        android:background="?selectableItemBackgroundBorderless"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/due_tag"
+            android:background="@android:color/holo_orange_light"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="@dimen/tag_size"
+            android:layout_height="0dp" />
+
+        <LinearLayout
+            android:paddingStart="@dimen/container_horiz_padding"
+            android:paddingEnd="@dimen/container_horiz_padding"
+            android:paddingTop="@dimen/container_vert_padding"
+            android:paddingBottom="@dimen/container_vert_padding"
+            android:orientation="vertical"
+            app:layout_constraintStart_toEndOf="@id/due_tag"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/buttons"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/text_task_title"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:text="@{task.title}"
+                tools:text="Go to work"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/text_task_description"
+                android:layout_marginBottom="4dp"
+                android:text="@{task.description}"
+                app:isGone="@{task.description.length() > 0}"
+                tools:visibility="gone"
+                tools:text="You have work early today, best get up early and take an Uber if you're running late"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_marginTop="4dp"
+                app:isGone="@{task.dueDate != null}"
+                app:cardBackgroundColor="#eeeeee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/text_task_due_date"
+                    android:drawableStart="@drawable/ic_today_black"
+                    android:drawablePadding="6dp"
+                    android:layout_margin="@dimen/container_padding_small"
+                    android:text="@{task.dueDate.toString()}"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    tools:text="2019/10/02"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/buttons"
+            android:orientation="horizontal"
+            android:gravity="center"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp">
+
+            <ImageButton
+                android:id="@+id/btn_completed"
+                android:onClick="@{() -> listener.onTaskCompleted(task)}"
+                android:background="?selectableItemBackgroundBorderless"
+                android:padding="@dimen/flat_image_button_padding"
+                android:theme="@style/AppTheme.ControlHighlight"
+                android:tint="@android:color/holo_green_dark"
+                android:src="@drawable/ic_check_black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageButton
+                android:id="@+id/btn_delete"
+                android:onClick="@{() -> listener.onTaskDeleted(task)}"
+                android:src="@drawable/ic_delete_black"
+                android:background="?selectableItemBackgroundBorderless"
+                android:padding="@dimen/flat_image_button_padding"
+                android:theme="@style/AppTheme.ControlHighlight"
+                android:tint="@android:color/holo_red_dark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

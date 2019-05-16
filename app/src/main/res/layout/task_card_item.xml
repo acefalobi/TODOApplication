@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="listener"
+            type="com.aceinteract.mvvm.todo.ui.task.list.TaskActionListener" />
+
+        <variable
+            name="task"
+            type="com.aceinteract.mvvm.todo.data.entity.Task" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:onClick="@{() -> listener.onTaskClicked(task)}"
+        android:background="?selectableItemBackgroundBorderless"
+        android:layout_margin="@dimen/container_horiz_padding"
+        app:cardBackgroundColor="@color/color_accent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_margin="@dimen/container_horiz_padding"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+
+            <TextView
+                android:id="@+id/text_task_title"
+                android:text="@{task.title}"
+                tools:text="Go Shopping"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="@android:color/primary_text_dark"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/text_task_description"
+                android:textColor="#aaffffff"
+                android:text="@{task.description}"
+                app:isGone="@{task.description.length() > 0}"
+                tools:text="Visit the mall for household items and get vegetables from the market"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/text_task_due_date"
+                tools:text="10:00 AM ∙ Today"
+                android:textColor="#aaffffff"
+                android:text="@{task.dueDate.toString()}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:layout_marginTop="@dimen/form_spacing"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">TODO Application</string>
+
+    <!-- Titles -->
+    <string name="title_task_add">Add New Task</string>
+
+
+    <!-- Info -->
+    <string name="info_empty_tasks">No tasks added yet. Click the \"+\" button to add a new task</string>
+</resources>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.task.list.TaskListFragment">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.aceinteract.mvvm.todo.ui.task.list.TaskListViewModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_tasks"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:items="@{viewModel.taskList}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/task_list_item" />
+
+        <TextView
+            app:isGone="@{viewModel.tasksEmpty}"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:layout_margin="@dimen/container_horiz_padding"
+            android:text="@string/info_empty_tasks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </FrameLayout>
+
+</layout>

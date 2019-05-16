@@ -1,0 +1,23 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryDark">@color/color_primary_dark</item>
+        <item name="colorSecondary">@color/color_accent</item>
+        <item name="colorAccent">@color/color_accent</item>
+    </style>
+
+
+    <!-- Control Themes -->
+    <style name="AppTheme.ControlHighlight">
+        <item name="colorControlHighlight">@color/color_accent_ripple</item>
+    </style>
+
+    <style name="AppTheme.ControlHighlight.Dark">
+        <item name="colorControlHighlight">@color/color_light_ripple</item>
+        <item name="android:textColorHighlight">@android:color/white</item>
+    </style>
+
+</resources>

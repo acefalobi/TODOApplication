@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_primary">#ffffff</color>
+    <color name="color_primary_translucent">#44ffffff</color>
+
+    <color name="color_primary_dark">#ffffff</color>
+
+    <color name="color_accent">#E91E63</color>
+
+    <color name="color_accent_ripple">#42E91E63</color>
+    <color name="color_light_ripple">#42ffffff</color>
+</resources>
